@@ -3,6 +3,7 @@
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
 */
 
+var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var gameStarted = false;
 $(
 	function(){
@@ -30,11 +31,11 @@ var Kellogs = {
         key = Kellogs.packet[i],
         heat = undefined;
     if (max <= 0) { return 1; };
-    if (key === undefined) { return 0; };
-    if (key.count < 0) { return 0;};
+    if (key === undefined) { return 1; };
+    if (key.count < 0) { return 1;};
     if (key.count == min ) { return 1;};
     heat = Math.round(key.count/fractions);
-    return heat;
+    return (heat > 0) ? heat : 1;
   },
   packet: {},
   keyPressed: function(event,callback){
@@ -42,8 +43,7 @@ var Kellogs = {
     if (Kellogs.packet[keyCode] === undefined) {
       Kellogs.packet[keyCode] = {
         key: String.fromCharCode(keyCode),
-        count: 1,
-        heat: 1
+        count: 1
       };
     } else {
       Kellogs.packet[keyCode].count++;
@@ -52,7 +52,7 @@ var Kellogs = {
     // Now update the UI keys
     var heat = Kellogs.heat(Kellogs.packet[keyCode].count);
     var key = String.fromCharCode(keyCode);
-    updateKeyboard(keyCode);
+    updateKeyboard();
 
     return Kellogs.packet[keyCode];
   },
@@ -65,7 +65,16 @@ var Kellogs = {
     return _.max(_.pluck(Kellogs.packet, 'count'));
   },
   speed: function(i){
-    return Math.round(15/Kellogs.heat(Kellogs.packet[i].count));
+    if (_.contains(letters, Kellogs.packet[i].key)) {
+      var heat = Kellogs.heat(i);
+      heat =  _.max(heat, 1); 
+      var result = Math.round(15/Kellogs.heat(i));
+      if (result === Infinity ) { return 1;}
+      return result;
+    }else{
+      return 2;
+    }
+    
   }
 };
 var Timer = {
@@ -168,7 +177,9 @@ var Typer={
   },
 
   addText:function(key, speed){//Main function to add the code
-
+    if (speed === undefined) {
+      speed = Typer.speed;
+    }
     if(Typer._stopped){
       key.preventDefault();
       key.returnValue= false;
@@ -203,11 +214,12 @@ var Typer={
       if(cont.substring(cont.length-1,cont.length)=="|") // if the last char is the blinking cursor
         $("#console").html($("#console").html().substring(0,cont.length-1)); // remove it before adding the text
       if(key.keyCode!=8){ // if key is not backspace
-        Typer.index+=Typer.speed;	// add to the index the speed
+        Typer.index+=speed;	// add to the index the speed
       }else{
         if(Typer.index>0) // else if index is not less than 0 
-          Typer.index-=Typer.speed;//	remove speed for deleting text
+          Typer.index-=speed;//	remove speed for deleting text
       }
+      console.log("Speed: ", speed);
       var text=$("<div/>").text(Typer.text.substring(0,Typer.index)).html();// parse the text for stripping html enities
       var rtn= new RegExp("\n", "g"); // newline regex
       var rts= new RegExp("\\s", "g"); // whitespace regex
@@ -234,13 +246,25 @@ var Typer={
 };
 
 function updateKeyboard(){
-  var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  _.each(Kellogs.packet, function(obj, code){
-    if (_.contains(letters, obj.key.toLowerCase())) {
-      var x = obj.key.toLowerCase();
-      $('.key.'+x).attr('class','key '+x+' '+ 'heat-'+ Kellogs.heat(code));
-    }
+  var code, obj;
+  _.each(letters, function(letter){
+    code = _.first(_.compact(_.map(Kellogs.packet, function(v, k){ if(v.key === letter ) return k; })));
+    letter = letter.toLowerCase();
+    obj = Kellogs.packet[code];
+    if (obj) {
+      var l = letter;
+      var heat = Kellogs.heat(code);
+      var classString = 'key ' + l.toLowerCase() + ' heat-' + heat;
+      $('.key.'+l.toLowerCase()).attr('class', classString);
+      console.log('Key found:', classString);
+    } else {
+      var l = letter;
+      $('.key.'+letter).attr('class', 'key heat-0 ' + letter);
+     console.log('object not found?', letter); 
+    };
+
   });
+
 }
 
 function updateProgress(){
