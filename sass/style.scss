@@ -2,7 +2,7 @@
 @import "compass/reset";
 
 $old-green: hsl(120,75,50);
-$old-bg: hsl(120,20,17);
+$old-bg: hsl(120,20,18);
 
 *{
 	@include box-sizing(border-box);
@@ -27,7 +27,7 @@ body{
 	margin: 59px auto 0;
 	min-height: 40px;
 	position: relative;
-	//@include text-shadow(black 1px 1px) ;
+	@include text-shadow(black 1px 1px) ;
 	@include box-shadow(black red 3px 3px);
 	overflow: hidden; 
 
@@ -108,9 +108,11 @@ body{
 .key{
 	background-color: hsl(60,10,90);
 	font-family: 'PT Mono', monospace;
-	font-weight: 700;
+	text-transform: uppercase;
+	font-weight: 900;
 	text-align: center;
-	line-height: 30px;
+	line-height: 31px;
+	padding-left: 1px;
 	font-size: .9em;
 	width: 30px;
 	height: 30px;

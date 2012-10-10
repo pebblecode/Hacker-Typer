@@ -81,7 +81,7 @@ body {
 #dialog {
   color: rgba(0, 255, 0, 0.75);
   font-family: 'PT Mono', monospace;
-  background-color: #233423;
+  background-color: #253725;
   font-size: 12px;
   line-height: 1;
   padding: 10px;
@@ -90,6 +90,7 @@ body {
   margin: 59px auto 0;
   min-height: 40px;
   position: relative;
+  text-shadow: black 1px 1px;
   -webkit-box-shadow: black red 3px 3px;
   -moz-box-shadow: black red 3px 3px;
   box-shadow: black red 3px 3px;
@@ -183,9 +184,11 @@ body {
 .key {
   background-color: #e8e8e3;
   font-family: 'PT Mono', monospace;
-  font-weight: 700;
+  text-transform: uppercase;
+  font-weight: 900;
   text-align: center;
-  line-height: 30px;
+  line-height: 31px;
+  padding-left: 1px;
   font-size: .9em;
   width: 30px;
   height: 30px;
@@ -194,27 +197,27 @@ body {
   color: rgba(0, 0, 0, 0.7);
 }
 
-/* line 122, sass/style.scss */
+/* line 124, sass/style.scss */
 .heat-5 {
   background-color: #f07575;
 }
 
-/* line 126, sass/style.scss */
+/* line 128, sass/style.scss */
 .heat-4 {
   background-color: #f0b375;
 }
 
-/* line 130, sass/style.scss */
+/* line 132, sass/style.scss */
 .heat-3 {
   background-color: #f0f075;
 }
 
-/* line 134, sass/style.scss */
+/* line 136, sass/style.scss */
 .heat-2 {
   background-color: #b3f075;
 }
 
-/* line 138, sass/style.scss */
+/* line 140, sass/style.scss */
 .heat-1 {
   background-color: #75f075;
 }
