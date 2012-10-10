@@ -106,9 +106,10 @@ body {
 #dialog {
   margin: 16px auto;
   height: 62px;
+  padding: 13px 10px;
 }
 
-/* line 43, sass/style.scss */
+/* line 44, sass/style.scss */
 .accessGranted {
   position: absolute;
   top: 200px;
@@ -121,7 +122,7 @@ body {
   text-align: center;
 }
 
-/* line 55, sass/style.scss */
+/* line 56, sass/style.scss */
 .accessDenied {
   position: absolute;
   top: 200px;
@@ -135,7 +136,7 @@ body {
   text-align: center;
 }
 
-/* line 68, sass/style.scss */
+/* line 69, sass/style.scss */
 #eight-bit {
   background-image: url("/key-demon.png");
   position: absolute;
@@ -148,7 +149,7 @@ body {
   z-index: 10;
 }
 
-/* line 81, sass/style.scss */
+/* line 82, sass/style.scss */
 #keyboard {
   height: 120px;
   width: 660px;
@@ -157,28 +158,28 @@ body {
   position: relative;
 }
 
-/* line 89, sass/style.scss */
+/* line 90, sass/style.scss */
 .row-one {
   position: absolute;
   top: 10px;
   left: 72px;
 }
 
-/* line 95, sass/style.scss */
+/* line 96, sass/style.scss */
 .row-two {
   position: absolute;
   top: 46px;
   left: 80px;
 }
 
-/* line 101, sass/style.scss */
+/* line 102, sass/style.scss */
 .row-three {
   position: absolute;
   top: 82px;
   left: 88px;
 }
 
-/* line 107, sass/style.scss */
+/* line 108, sass/style.scss */
 .key {
   background-color: #e8e8e3;
   font-family: 'PT Mono', monospace;
