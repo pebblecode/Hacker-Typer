@@ -3,12 +3,23 @@
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
 */
 
+var gameStarted = false;
 $(
 	function(){
 		$( document ).on('keydown',function ( event ) { 
-        Kellogs.keyPressed(event, Typer.addText);
-			}
-		);
+      if (!gameStarted ) {
+        if (event.keyCode == 13) {
+          gameStarted = true;
+        }else{
+          event.preventDefault();
+          return false;
+        }
+      }else{
+      
+      }
+      Kellogs.keyPressed(event, Typer.addText);
+      
+		});
 	}
 );
 var Kellogs = {
@@ -37,7 +48,7 @@ var Kellogs = {
     } else {
       Kellogs.packet[keyCode].count++;
     }
-    if (_.isFunction(callback)) { callback(keyCode, Kellogs.speed(keyCode));};
+    if (_.isFunction(callback)) { callback(event, Kellogs.speed(keyCode));};
     // Now update the UI keys
     var heat = Kellogs.heat(Kellogs.packet[keyCode].count);
     var key = String.fromCharCode(keyCode);
@@ -64,7 +75,6 @@ var Timer = {
   elapsed:    function(){
                 if (Timer._start === undefined ) {
                   return 0;
-                  console.log('Undefined!')
                 }
 
                 return (Date.now() - Timer._start)/1000;
@@ -74,7 +84,6 @@ var Timer = {
   _interval:   undefined,
 
   start:  function(){
-                console.log("Start called timer");
                 if (Timer._start === undefined) { Timer._start = Date.now();}
                 if (Timer._interval === undefined) {
                   // we multiply precision because it is in seconds
@@ -112,7 +121,6 @@ var Typer={
   file:"", //file, must be setted
   accessCount:0, //times alt is pressed for Access Granted
   deniedCount:0, //times caps is pressed for Access Denied
-  infinite: false, // should write text forever or not
   _started: false,
   _stopped: false,
   init: function(){// inizialize Hacker Typer
@@ -159,7 +167,7 @@ var Typer={
     Typer._stopped = true;
   },
 
-  addText:function(key){//Main function to add the code
+  addText:function(key, speed){//Main function to add the code
     if(Typer._stopped){ return false;}
     else if (!Typer._started) {
       Typer._started = true; 
@@ -178,8 +186,6 @@ var Typer={
     }else if(key.keyCode==27){ // key 27 = esc key
       Typer.hidepop(); // hide all popups
     }else if(Typer.text){ // otherway if text is loaded
-      $('#textindex').text("Index: " + Typer.index);
-      
       if (Typer.index >= Typer.text.length) {
         Timer.stop();
         Typer.stop();
