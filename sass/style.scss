@@ -4,8 +4,12 @@
 $old-green: hsl(120,75,50);
 $old-bg: hsl(120,20,10);
 
+*{
+	@include box-sizing(border-box);
+}
+
 body{
-	background:#000000;
+	background:#fff;
 	margin: 0;
 }
 
@@ -13,23 +17,26 @@ body{
 	color: $old-green;
 	font-family: 'PT Mono', monospace;
 	background-color: $old-bg;
-	font-size: 14px;
+	font-size: 12px;
+	line-height: 1;
 	padding: 10px;
-	width: 660px;
-	border: 2px solid $old-green;
-	margin: 20px auto;
+	width: 604px;
+	height: 374px;
+	//border: 2px solid $old-green;
+	margin: 59px auto;
 	min-height: 40px;
 	position: relative;
 	@include text-shadow(black 1px 1px) ;
-	@include box-shadow(black red 3px 3px); 
+	@include box-shadow(black red 3px 3px);
+	overflow: hidden; 
 
 	&:after{
 		content: "";
 		position: absolute;
-		top: -2px;
-		left: -2px;
-		right: -2px;
-		bottom: -2px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 		@include background-image(linear-gradient(hsla(0,0,0,.3) 33%, hsla(0,0,0,.15) 33%, hsla(0,0,0,.15) 66%, hsla(0,0,0,0) 66%));
 		background-size: 3px 3px;
 		background-position: 2px 1px;
@@ -59,4 +66,16 @@ body{
 	left:50%;
 	margin-left:-150px;
 	text-align:center;
+}
+
+#eight-bit{
+	background-image: url("/key-demon.png");
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	margin-left: -(684px/2);
+	width: 684px;
+	height: 732px;
+	background-repeat:no-repeat;
+	//opacity: .5;
 }
