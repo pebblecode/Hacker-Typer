@@ -93,7 +93,8 @@ body {
   -webkit-box-shadow: black red 3px 3px;
   -moz-box-shadow: black red 3px 3px;
   box-shadow: black red 3px 3px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 /* line 33, sass/style.scss */
 #console:after {
