@@ -94,7 +94,8 @@ body {
   -webkit-box-shadow: black red 3px 3px;
   -moz-box-shadow: black red 3px 3px;
   box-shadow: black red 3px 3px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 /* line 34, sass/style.scss */
 #console:after,
@@ -166,4 +167,17 @@ body {
   width: 660px;
   background-color: #ddddd5;
   margin: 100px auto 0;
+}
+
+#timer{
+  position: fixed;
+  display: block;
+  bottom: 1em; 
+  right: 1em;
+}
+#textindex{
+  position: fixed;
+  display: block;
+  bottom: 1em; 
+  left: 1em;
 }
