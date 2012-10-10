@@ -193,3 +193,28 @@ body {
   margin-right: 2px;
   color: rgba(0, 0, 0, 0.7);
 }
+
+/* line 122, sass/style.scss */
+.heat-5 {
+  background-color: #f07575;
+}
+
+/* line 126, sass/style.scss */
+.heat-4 {
+  background-color: #f0b375;
+}
+
+/* line 130, sass/style.scss */
+.heat-3 {
+  background-color: #f0f075;
+}
+
+/* line 134, sass/style.scss */
+.heat-2 {
+  background-color: #b3f075;
+}
+
+/* line 138, sass/style.scss */
+.heat-1 {
+  background-color: #75f075;
+}
