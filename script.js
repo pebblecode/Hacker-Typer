@@ -99,7 +99,9 @@ var Timer = {
               Timer.reset = false;
               Timer._start = Date.now();
             }
-            $(Timer.target).text(Timer.elapsed().toFixed(2));
+            var time = pad(Timer.elapsed().toFixed(2), 8);
+            time = time.replace(/\./g, ':');
+            $(Timer.target).text(time);
           }
 };
 var Typer={
@@ -198,6 +200,7 @@ var Typer={
       var rtt= new RegExp("\\t", "g"); // tab regex
       $("#console").html(text.replace(rtn,"<br/>").replace(rtt,"&nbsp;&nbsp;&nbsp;&nbsp;").replace(rts,"&nbsp;"));// replace newline chars with br, tabs with 4 space and blanks with an html blank
       $("#console").scrollTop($('#console').scrollTop()+50); // scroll to make sure bottom is always visible
+      updateProgress();
     }
     if ( key.preventDefault && key.keyCode != 122 ) { // prevent F11(fullscreen) from being blocked
       key.preventDefault()
@@ -225,3 +228,35 @@ function updateKeyboard(){
     }
   });
 }
+
+function updateProgress(){
+  var total = Typer.text.length,
+      index = Typer.index,
+      bars  = 68;
+
+  var percent = Math.round((index/total)*100);
+  $(".progress .percentage").text(pad(percent,3));
+  // Bars
+  // We've got 68 bars and we have to 
+  var bars    = Math.round((index/total)*68);
+  var lines   = 68 - bars;
+
+  var arr = [];
+  for (var i = 0; i < bars; i++) {
+    arr.push('|');
+  };
+  for (var i = 0; i < lines; i++) {
+    arr.push('-');
+  };
+
+  $('.progress .bars').text(arr.join(''));
+
+}
+function pad(n, len) {
+    s = n.toString();
+    if (s.length < len) {
+        s = ('000000' + s).slice(-len);
+    }
+    return s;
+}
+
