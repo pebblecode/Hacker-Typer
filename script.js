@@ -39,6 +39,11 @@ var Kellogs = {
   },
   packet: {},
   keyPressed: function(event,callback){
+    if(Typer._stopped){
+      event.preventDefault();
+      event.returnValue = false;
+      return false;
+    }
     var keyCode = event.keyCode;
     if (Kellogs.packet[keyCode] === undefined) {
       Kellogs.packet[keyCode] = {
@@ -184,7 +189,6 @@ var Typer={
       key.preventDefault();
       key.returnValue= false;
       return false;
-    
     }
     else if (!Typer._started) {
       Typer._started = true; 
