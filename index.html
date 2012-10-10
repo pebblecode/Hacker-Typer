@@ -14,7 +14,7 @@
 		<script src='script.js' type='text/javascript'></script> 
 
 		<script type='text/javascript'>
-      Timer.target = '#timer';
+      Timer.target = '#timer .digits';
 			Typer.speed=3;
 			Typer.file='kernel.txt';
 			Typer.init();
@@ -31,11 +31,11 @@
 
 		<div id='dialog'>
 
-			<div class="progress">Progress: |||||||||||||||||||||||||||||||||||||||---------------------------------</div>
+      <div class="progress">Progress: <span class="bars">--------------------------------------------------------------------</span> <span class="percentage">000</span>%</div>
 
 			<br>
 
-			<div id="timer">Time: 00000:00</div>
+      <div id="timer">Time: <span class="digits">00000:00</span></div>
 
 		</div>		
 
