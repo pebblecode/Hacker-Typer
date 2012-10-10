@@ -1,40 +1,126 @@
-body{
-	background:#000000;
-	margin: 0;
+/* line 17, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
-#console{
-	color: #0F0;
-	font-family: 'PT Mono', monospace;
-	background-color: #222;
-	font-size: 14px;
-	padding: 10px;
-	width: 660px;
-	border: 2px solid #0F0;
-	margin: 20px auto;
+/* line 22, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
 }
 
-.accessGranted{
-	position:absolute;
-	top:200px;
-	background:#333;
-	padding:20px;
-	border:1px solid #999;
-	width:300px;
-	left:50%;
-	margin-left:-150px;
-	text-align:center;
+/* line 24, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
 }
 
-.accessDenied{
-	position:absolute;
-	top:200px;
-	color:#F00;
-	background:#511;
-	padding:20px;
-	border:1px solid #F00;
-	width:300px;
-	left:50%;
-	margin-left:-150px;
-	text-align:center;
+/* line 26, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 7, sass/style.scss */
+body {
+  background: #000000;
+  margin: 0;
+}
+
+/* line 12, sass/style.scss */
+#console {
+  color: #2dd22d;
+  font-family: 'PT Mono', monospace;
+  background-color: #262626;
+  font-size: 14px;
+  padding: 10px;
+  width: 660px;
+  border: 2px solid #2dd22d;
+  margin: 20px auto;
+  min-height: 40px;
+  position: relative;
+}
+/* line 24, sass/style.scss */
+#console:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(33%, rgba(38, 38, 38, 0.4)), color-stop(33%, rgba(38, 38, 38, 0.2)), color-stop(66%, rgba(38, 38, 38, 0.2)), color-stop(66%, rgba(38, 38, 38, 0)));
+  background-image: -webkit-linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
+  background-image: -moz-linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
+  background-image: -o-linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
+  background-image: linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
+  background-size: 3px 3px;
+}
+
+/* line 36, sass/style.scss */
+.accessGranted {
+  position: absolute;
+  top: 200px;
+  background: #333;
+  padding: 20px;
+  border: 1px solid #999;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  text-align: center;
+}
+
+/* line 48, sass/style.scss */
+.accessDenied {
+  position: absolute;
+  top: 200px;
+  color: #F00;
+  background: #511;
+  padding: 20px;
+  border: 1px solid #F00;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  text-align: center;
 }
