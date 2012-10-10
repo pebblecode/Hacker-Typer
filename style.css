@@ -76,34 +76,36 @@ body {
   margin: 0;
 }
 
-/* line 16, sass/style.scss */
-#console {
+/* line 17, sass/style.scss */
+#console,
+#dialog {
   color: #20df20;
   font-family: 'PT Mono', monospace;
-  background-color: #141f14;
+  background-color: #233423;
   font-size: 12px;
   line-height: 1;
   padding: 10px;
   width: 604px;
   height: 374px;
-  margin: 59px auto;
+  margin: 59px auto 0;
   min-height: 40px;
   position: relative;
   text-shadow: black 1px 1px;
   -webkit-box-shadow: black red 3px 3px;
   -moz-box-shadow: black red 3px 3px;
   box-shadow: black red 3px 3px;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
 }
-/* line 33, sass/style.scss */
-#console:after {
+/* line 34, sass/style.scss */
+#console:after,
+#dialog:after {
   content: "";
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(33%, rgba(0, 0, 0, 0.3)), color-stop(33%, rgba(0, 0, 0, 0.15)), color-stop(66%, rgba(0, 0, 0, 0.15)), color-stop(66%, rgba(0, 0, 0, 0)));
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.3) 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, rgba(0, 0, 0, 0) 66%);
   background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.3) 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, rgba(0, 0, 0, 0) 66%);
@@ -113,7 +115,13 @@ body {
   background-position: 2px 1px;
 }
 
-/* line 46, sass/style.scss */
+/* line 48, sass/style.scss */
+#dialog {
+  margin: 16px auto;
+  height: 62px;
+}
+
+/* line 53, sass/style.scss */
 .accessGranted {
   position: absolute;
   top: 200px;
@@ -126,7 +134,7 @@ body {
   text-align: center;
 }
 
-/* line 58, sass/style.scss */
+/* line 65, sass/style.scss */
 .accessDenied {
   position: absolute;
   top: 200px;
@@ -140,7 +148,7 @@ body {
   text-align: center;
 }
 
-/* line 71, sass/style.scss */
+/* line 78, sass/style.scss */
 #eight-bit {
   background-image: url("/key-demon.png");
   position: absolute;
@@ -150,6 +158,7 @@ body {
   width: 684px;
   height: 732px;
   background-repeat: no-repeat;
+  z-index: 10;
 }
 
 #timer{
@@ -159,9 +168,47 @@ body {
   bottom: 1em; 
   right: 1em;
 }
-#textindex{
-  position: fixed;
-  display: block;
-  bottom: 1em; 
-  left: 1em;
+/* line 91, sass/style.scss */
+#keyboard {
+  height: 120px;
+  width: 660px;
+  background-color: #cccccc;
+  margin: 100px auto 0;
+  position: relative;
+}
+
+/* line 99, sass/style.scss */
+.row-one {
+  position: absolute;
+  top: 10px;
+  left: 72px;
+}
+
+/* line 105, sass/style.scss */
+.row-two {
+  position: absolute;
+  top: 46px;
+  left: 80px;
+}
+
+/* line 111, sass/style.scss */
+.row-three {
+  position: absolute;
+  top: 82px;
+  left: 88px;
+}
+
+/* line 117, sass/style.scss */
+.key {
+  background-color: #e8e8e3;
+  font-family: 'PT Mono', monospace;
+  font-weight: 700;
+  text-align: center;
+  line-height: 30px;
+  font-size: .9em;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-right: 2px;
+  color: rgba(0, 0, 0, 0.7);
 }

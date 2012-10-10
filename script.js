@@ -13,13 +13,31 @@ $(
 	}
 );
 var Kellogs = {
+  heatmap: {
+    1: 'blue',
+    2: 'green',
+    3: 'yellow',
+    4: 'orange',
+    5: 'red'
+  },
+  heat: function(count){
+    var min = Kellogs.min(),
+        max = Kellogs.max(),
+        fractions = max/5, 
+        heat = undefined;
+    if (max <= 0) { return 1; }
+    if (count < 0) { return 0;}
+    heat = Math.round(count/fractions);
+
+  },
   packet: {},
   keyPressed: function(event){
     var keyCode = event.keyCode;
     if (Kellogs.packet[keyCode] === undefined) {
       Kellogs.packet[keyCode] = {
         key: String.fromCharCode(keyCode),
-        count: 1
+        count: 1,
+        heat: 1
       };
     } else {
       Kellogs.packet[keyCode].count++;
