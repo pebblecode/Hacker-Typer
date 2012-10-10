@@ -18,9 +18,10 @@ var Kellogs = {
         fractions = max/5,
         key = Kellogs.packet[i],
         heat = undefined;
-    if (max <= 0) { return 1; }
-    if (key === undefined) { return 0; }
-    if (key.count < 0) { return 0;}
+    if (max <= 0) { return 1; };
+    if (key === undefined) { return 0; };
+    if (key.count < 0) { return 0;};
+    if (key.count == min ) { return 1;};
     heat = Math.round(key.count/fractions);
     return heat;
   },
