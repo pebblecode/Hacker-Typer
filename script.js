@@ -179,6 +179,7 @@ var Typer={
   
   stop:function(){
     Typer._stopped = true;
+    endGame();
   },
 
   addText:function(key, speed){//Main function to add the code
@@ -223,7 +224,6 @@ var Typer={
         if(Typer.index>0) // else if index is not less than 0 
           Typer.index-=speed;//	remove speed for deleting text
       }
-      console.log("Speed: ", speed);
       var text=$("<div/>").text(Typer.text.substring(0,Typer.index)).html();// parse the text for stripping html enities
       var rtn= new RegExp("\n", "g"); // newline regex
       var rts= new RegExp("\\s", "g"); // whitespace regex
@@ -277,11 +277,12 @@ function updateProgress(){
       bars  = 68;
 
   var percent = Math.round((index/total)*100);
+  if (percent > 100) { percent = 100;}
   $(".progress .percentage").text(pad(percent,3));
   // Bars
-  // We've got 68 bars and we have to 
-  var bars    = Math.round((index/total)*68);
-  var lines   = 68 - bars;
+  // We've got 65 bars and we have to 
+  var bars    = Math.round((index/total)*65);
+  var lines   = 65 - bars;
 
   var arr = [];
   for (var i = 0; i < bars; i++) {
@@ -293,12 +294,38 @@ function updateProgress(){
 
   $('.progress .bars').text(arr.join(''));
 
-}
+};
+
 function pad(n, len) {
     s = n.toString();
     if (s.length < len) {
         s = ('000000' + s).slice(-len);
     }
     return s;
-}
+};
 
+var blinkInterval = undefined;
+var blink_off = false;
+var blinks = 0;
+function endGame(){
+  // blink text
+  //
+  var blinkInterval = setInterval(function(){
+    if (blink_off) {
+      $('#console').css('color', 'rgba(0, 255, 0, 0.75)');
+      blink_off = false;
+    } else {
+      $('#console').css('color', 'rgba(0,0,0,0.01)');
+      blink_off = true;
+    }
+    blinks++;
+
+    if(blinks >= 5){
+      clearInterval(blinkInterval);
+      $('#console').text('');
+      $('.game-over img').toggle();
+    }
+
+  }, 500);
+  //
+};

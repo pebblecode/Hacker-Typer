@@ -144,3 +144,13 @@ body{
 .heat-0{
 	background-color: hsl(120,80,50);
 }
+.game-over img{
+  display: none;
+  position: absolute;
+  z-index: 50;
+  margin: 0 auto;
+  left: 50%;
+  margin-left: -282px;
+  top: 200px;
+  
+}
