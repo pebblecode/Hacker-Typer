@@ -150,3 +150,16 @@ body {
   height: 732px;
   background-repeat: no-repeat;
 }
+
+#timer{
+  position: fixed;
+  display: block;
+  bottom: 1em; 
+  right: 1em;
+}
+#textindex{
+  position: fixed;
+  display: block;
+  bottom: 1em; 
+  left: 1em;
+}
