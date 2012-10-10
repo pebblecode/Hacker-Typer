@@ -6,32 +6,26 @@
 $(
 	function(){
 		$( document ).on('keydown',function ( event ) { 
-				Typer.addText( event ); //Capture the keydown event and call the addText, this is executed on page load
-        Kellogs.keyPressed(event);
+        Kellogs.keyPressed(event, Typer.addText);
 			}
 		);
 	}
 );
 var Kellogs = {
-  heatmap: {
-    1: 'blue',
-    2: 'green',
-    3: 'yellow',
-    4: 'orange',
-    5: 'red'
-  },
-  heat: function(count){
+  heat: function(i){
     var min = Kellogs.min(),
         max = Kellogs.max(),
-        fractions = max/5, 
+        fractions = max/5,
+        key = Kellogs.packet[i],
         heat = undefined;
     if (max <= 0) { return 1; }
-    if (count < 0) { return 0;}
-    heat = Math.round(count/fractions);
-
+    if (key === undefined) { return 0; }
+    if (key.count < 0) { return 0;}
+    heat = Math.round(key.count/fractions);
+    return heat;
   },
   packet: {},
-  keyPressed: function(event){
+  keyPressed: function(event,callback){
     var keyCode = event.keyCode;
     if (Kellogs.packet[keyCode] === undefined) {
       Kellogs.packet[keyCode] = {
@@ -42,6 +36,13 @@ var Kellogs = {
     } else {
       Kellogs.packet[keyCode].count++;
     }
+    if (_.isFunction(callback)) { callback(keyCode, Kellogs.speed(keyCode));};
+    // Now update the UI keys
+    var heat = Kellogs.heat(Kellogs.packet[keyCode].count);
+    var key = String.fromCharCode(keyCode);
+    updateKeyboard(keyCode);
+
+    return Kellogs.packet[keyCode];
   },
   max: function(){
     if (_.isEmpty(Kellogs.packet)) { return 0; };
@@ -50,6 +51,9 @@ var Kellogs = {
   min: function(){
     if (_.isEmpty(Kellogs.packet)) { return 0; };
     return _.max(_.pluck(Kellogs.packet, 'count'));
+  },
+  speed: function(i){
+    return Math.round(15/Kellogs.heat(Kellogs.packet[i].count));
   }
 };
 var Timer = {
@@ -210,3 +214,13 @@ var Typer={
       this.write("|"); // else write it
   }
 };
+
+function updateKeyboard(){
+  var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  _.each(Kellogs.packet, function(obj, code){
+    if (_.contains(letters, obj.key.toLowerCase())) {
+      var x = obj.key.toLowerCase();
+      $('.key.'+x).attr('class','key '+x+' '+ 'heat_'+ Kellogs.heat(code));
+    }
+  });
+}
