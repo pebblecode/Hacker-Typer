@@ -2,7 +2,7 @@
 @import "compass/reset";
 
 $old-green: hsl(120,75,50);
-$old-bg: hsl(120,20,10);
+$old-bg: hsl(120,20,15);
 
 *{
 	@include box-sizing(border-box);
@@ -13,7 +13,8 @@ body{
 	margin: 0;
 }
 
-#console{
+#console,
+#dialog{
 	color: $old-green;
 	font-family: 'PT Mono', monospace;
 	background-color: $old-bg;
@@ -23,7 +24,7 @@ body{
 	width: 604px;
 	height: 374px;
 	//border: 2px solid $old-green;
-	margin: 59px auto;
+	margin: 59px auto 0;
 	min-height: 40px;
 	position: relative;
 	@include text-shadow(black 1px 1px) ;
@@ -41,6 +42,11 @@ body{
 		background-size: 3px 3px;
 		background-position: 2px 1px;
 	}
+}
+
+#dialog{
+	margin: 16px auto;
+	height: 62px;
 }
 
 .accessGranted{
@@ -78,4 +84,12 @@ body{
 	height: 732px;
 	background-repeat:no-repeat;
 	//opacity: .5;
+	z-index: 10;
+}
+
+#keyboard{
+	height: 120px;
+	width: 660px;
+	background-color: hsl(60,10,85);
+	margin: 100px auto 0;
 }
