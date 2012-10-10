@@ -2,7 +2,7 @@
 @import "compass/reset";
 
 $old-green: hsl(120,75,50);
-$old-bg: hsl(120,20,15);
+$old-bg: hsl(120,20,17);
 
 *{
 	@include box-sizing(border-box);
@@ -34,10 +34,11 @@ body{
 	&:after{
 		content: "";
 		position: absolute;
+		display: block;
 		top: 0;
 		left: 0;
-		right: 0;
-		bottom: 0;
+		width: 100%;
+		height: 100%;
 		@include background-image(linear-gradient(hsla(0,0,0,.3) 33%, hsla(0,0,0,.15) 33%, hsla(0,0,0,.15) 66%, hsla(0,0,0,0) 66%));
 		background-size: 3px 3px;
 		background-position: 2px 1px;
@@ -90,6 +91,39 @@ body{
 #keyboard{
 	height: 120px;
 	width: 660px;
-	background-color: hsl(60,10,85);
+	background-color: hsl(60,0,80);
 	margin: 100px auto 0;
+	position: relative;
+}
+
+.row-one{
+	position: absolute;
+	top: 10px;
+	left: 72px;
+}
+
+.row-two{
+	position: absolute;
+	top: 46px;
+	left: 80px;
+}
+
+.row-three{
+	position: absolute;
+	top: 82px;
+	left: 88px;
+}
+
+.key{
+	background-color: hsl(60,10,90);
+	font-family: 'PT Mono', monospace;
+	font-weight: 700;
+	text-align: center;
+	line-height: 30px;
+	font-size: .9em;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	margin-right: 2px;
+	color: hsla(0,0,0,.7);
 }
