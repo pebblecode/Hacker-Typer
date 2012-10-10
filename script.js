@@ -220,7 +220,7 @@ function updateKeyboard(){
   _.each(Kellogs.packet, function(obj, code){
     if (_.contains(letters, obj.key.toLowerCase())) {
       var x = obj.key.toLowerCase();
-      $('.key.'+x).attr('class','key '+x+' '+ 'heat_'+ Kellogs.heat(code));
+      $('.key.'+x).attr('class','key '+x+' '+ 'heat-'+ Kellogs.heat(code));
     }
   });
 }
