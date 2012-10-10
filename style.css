@@ -71,34 +71,39 @@ body {
 
 /* line 12, sass/style.scss */
 #console {
-  color: #2dd22d;
+  color: #20df20;
   font-family: 'PT Mono', monospace;
-  background-color: #262626;
+  background-color: #141f14;
   font-size: 14px;
   padding: 10px;
   width: 660px;
-  border: 2px solid #2dd22d;
+  border: 2px solid #20df20;
   margin: 20px auto;
   min-height: 40px;
   position: relative;
+  text-shadow: black 1px 1px;
+  -webkit-box-shadow: black red 3px 3px;
+  -moz-box-shadow: black red 3px 3px;
+  box-shadow: black red 3px 3px;
 }
-/* line 24, sass/style.scss */
+/* line 26, sass/style.scss */
 #console:after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(33%, rgba(38, 38, 38, 0.4)), color-stop(33%, rgba(38, 38, 38, 0.2)), color-stop(66%, rgba(38, 38, 38, 0.2)), color-stop(66%, rgba(38, 38, 38, 0)));
-  background-image: -webkit-linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
-  background-image: -moz-linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
-  background-image: -o-linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
-  background-image: linear-gradient(rgba(38, 38, 38, 0.4) 33%, rgba(38, 38, 38, 0.2) 33%, rgba(38, 38, 38, 0.2) 66%, rgba(38, 38, 38, 0) 66%);
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(33%, rgba(0, 0, 0, 0.3)), color-stop(33%, rgba(0, 0, 0, 0.15)), color-stop(66%, rgba(0, 0, 0, 0.15)), color-stop(66%, rgba(0, 0, 0, 0)));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.3) 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, rgba(0, 0, 0, 0) 66%);
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.3) 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, rgba(0, 0, 0, 0) 66%);
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.3) 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, rgba(0, 0, 0, 0) 66%);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, rgba(0, 0, 0, 0) 66%);
   background-size: 3px 3px;
+  background-position: 2px 1px;
 }
 
-/* line 36, sass/style.scss */
+/* line 39, sass/style.scss */
 .accessGranted {
   position: absolute;
   top: 200px;
@@ -111,7 +116,7 @@ body {
   text-align: center;
 }
 
-/* line 48, sass/style.scss */
+/* line 51, sass/style.scss */
 .accessDenied {
   position: absolute;
   top: 200px;

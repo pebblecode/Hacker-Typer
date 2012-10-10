@@ -1,8 +1,8 @@
 @import "compass/css3";
 @import "compass/reset";
 
-$old-green: hsl(120,65,50);
-$old-bg: hsl(0,0,15);
+$old-green: hsl(120,75,50);
+$old-bg: hsl(120,20,10);
 
 body{
 	background:#000000;
@@ -20,16 +20,19 @@ body{
 	margin: 20px auto;
 	min-height: 40px;
 	position: relative;
+	@include text-shadow(black 1px 1px) ;
+	@include box-shadow(black red 3px 3px); 
 
 	&:after{
 		content: "";
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		@include background-image(linear-gradient(hsla(0,0,15,.4) 33%, hsla(0,0,15,.2) 33%, hsla(0,0,15,.2) 66%, hsla(0,0,15,0) 66%));
+		top: -2px;
+		left: -2px;
+		right: -2px;
+		bottom: -2px;
+		@include background-image(linear-gradient(hsla(0,0,0,.3) 33%, hsla(0,0,0,.15) 33%, hsla(0,0,0,.15) 66%, hsla(0,0,0,0) 66%));
 		background-size: 3px 3px;
+		background-position: 2px 1px;
 	}
 }
 
