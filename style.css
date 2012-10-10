@@ -1,3 +1,4 @@
+html, body{ height: 100%;}
 body{
 	background:#000000;
 	color:#00FF00;
@@ -27,4 +28,16 @@ body{
 	left:50%;
 	margin-left:-150px;
 	text-align:center;
+}
+#timer{
+  position: fixed;
+  display: block;
+  bottom: 1em; 
+  right: 1em;
+}
+#textindex{
+  position: fixed;
+  display: block;
+  bottom: 1em; 
+  left: 1em;
 }

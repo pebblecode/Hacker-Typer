@@ -5,14 +5,57 @@
 
 $(
 	function(){
-		$( document ).keydown(
-			function ( event ) { 
+		$( document ).on('keydown',function ( event ) { 
 				Typer.addText( event ); //Capture the keydown event and call the addText, this is executed on page load
 			}
 		);
 	}
 );
+var Timer = {
+  target:     undefined,
+  _start:     undefined,
+  _end:       undefined,
+  elapsed:    function(){
+                if (Timer._start === undefined ) {
+                  return 0;
+                  console.log('Undefined!')
+                }
 
+                return (Date.now() - Timer._start)/1000;
+              },
+  precision:  0.01, // in seconds
+  reset:      false,
+  _interval:   undefined,
+
+  start:  function(){
+                console.log("Start called timer");
+                if (Timer._start === undefined) { Timer._start = Date.now();}
+                if (Timer._interval === undefined) {
+                  // we multiply precision because it is in seconds
+                  Timer._interval = setInterval(Timer.tic, (Timer.precision * 1000)); 
+                }
+                return Timer._interval;
+              },
+  pause:  function(){
+            if (Timer._interval) {
+              clearInterval(Timer._interval);
+              Timer._interval = undefined;
+            }
+            return Timer.elapsed; 
+          },
+  stop:   function(){
+            Timer.pause();
+            Timer.reset = true;
+            return Timer.elapsed;
+          },
+  tic:    function(){
+            if (Timer.reset) {
+              Timer.reset = false;
+              Timer._start = Date.now();
+            }
+            $(Timer.target).text(Timer.elapsed().toFixed(2));
+          }
+}
 var Typer={
 	text: null,
 	accessCountimer:null,
@@ -21,6 +64,9 @@ var Typer={
 	file:"", //file, must be setted
 	accessCount:0, //times alt is pressed for Access Granted
 	deniedCount:0, //times caps is pressed for Access Denied
+  infinite: false, // should write text forever or not
+  _started: false,
+  _stopped: false,
 	init: function(){// inizialize Hacker Typer
 		accessCountimer=setInterval(function(){Typer.updLstChr();},500); // inizialize timer for blinking cursor
 		$.get(Typer.file,function(data){// get the text file
@@ -61,7 +107,16 @@ var Typer={
 		$("#gran").remove();
 	},
 	
+  stop:function(){
+    Typer._stopped = true;
+  },
+
 	addText:function(key){//Main function to add the code
+    if(Typer._stopped){ return false;}
+    else if (!Typer._started) {
+      Typer._started = true; 
+      Timer.start();
+    }
 		if(key.keyCode==18){// key 18 = alt key
 			Typer.accessCount++; //increase counter 
 			if(Typer.accessCount>=3){// if it's presed 3 times
@@ -75,6 +130,13 @@ var Typer={
 		}else if(key.keyCode==27){ // key 27 = esc key
 			Typer.hidepop(); // hide all popups
 		}else if(Typer.text){ // otherway if text is loaded
+      $('#textindex').text("Index: " + Typer.index);
+      
+      if (Typer.index >= Typer.text.length) {
+        Timer.stop();
+        Typer.stop();
+        return false;
+      }
 			var cont=Typer.content(); // get the console content
 			if(cont.substring(cont.length-1,cont.length)=="|") // if the last char is the blinking cursor
 				$("#console").html($("#console").html().substring(0,cont.length-1)); // remove it before adding the text
