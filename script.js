@@ -168,7 +168,13 @@ var Typer={
   },
 
   addText:function(key, speed){//Main function to add the code
-    if(Typer._stopped){ return false;}
+
+    if(Typer._stopped){
+      key.preventDefault();
+      key.returnValue= false;
+      return false;
+    
+    }
     else if (!Typer._started) {
       Typer._started = true; 
       Timer.start();
@@ -189,6 +195,8 @@ var Typer={
       if (Typer.index >= Typer.text.length) {
         Timer.stop();
         Typer.stop();
+        key.preventDefault();
+        key.returnValue= false;
         return false;
       }
       var cont=Typer.content(); // get the console content
